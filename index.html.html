@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Input</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      input {
+        padding: 10px;
+        font-size: 16px;
+      }
+      .output {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Number Input</h1>
+    <input type="number" id="numberInput" placeholder="Enter a number" />
+    <div class="output" id="output"></div>
+
+    <script>
+      document
+        .getElementById("numberInput")
+        .addEventListener("input", function () {
+          const input = this.value;
+          const outputDiv = document.getElementById("output");
+
+          outputDiv.innerHTML = "";
+
+          const number = Number(input);
+          if (isNaN(number) || number < 0) {
+            outputDiv.textContent = "Enter a positive value";
+            return;
+          }
+
+          if (number % 2 === 0) {
+            let nextEvens = [];
+            for (let i = 1; i <= 3; i++) {
+              nextEvens.push(number + i * 2);
+            }
+            outputDiv.textContent = `Next 3 even numbers: ${nextEvens.join(
+              ", "
+            )}`;
+          } else {
+            let nextOdds = [];
+            for (let i = 1; i <= 3; i++) {
+              nextOdds.push(number + i * 2);
+            }
+            outputDiv.textContent = `Next 3 odd numbers: ${nextOdds.join(
+              ", "
+            )}`;
+          }
+        });
+    </script>
+  </body>
+</html>
